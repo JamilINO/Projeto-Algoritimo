@@ -6,5 +6,3 @@ print("#Os tipos de ingresso são: Inteira, Meia e VIP ")
 
 t_ingresso= input("Qual ingresso você deseja? \n")
 
-
-#Teste 123 oi mensagem do Ubuntu 
