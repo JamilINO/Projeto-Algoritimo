@@ -6,6 +6,7 @@ while (True):
 
     print("Filmes disponíveis: Filme 1, Filme 2 e Filme 3")
 
+<<<<<<< HEAD
     t_filme=input("Qual filme deseja assistir? ")
 
     print("Escolha entre sessão 1 e 2")
@@ -30,6 +31,21 @@ while (True):
     soma_vip=0
     soma_filme=""
 
+=======
+    t_filme=input("Qual filme deseja assistir: ")
+
+    print("Escolha entre sessão 1 e 2")
+
+    sessao=int(input("Qual a sessão: "))
+
+    print("Os tipos de ingresso são: Inteira, Meia e VIP ")
+
+    inteira=int(input("Quantas entradas inteiras: "))
+    meia=int(input("Quantas entradas meia: "))
+    vip=int(input("Quantas entradas vip: "))
+
+    endloop = input ("Deseja encerrar o atendimento: ")
+>>>>>>> da2b94ac963222fc62eca6c5e2de22ef7bb9c0c5
     
     inteira=inteira_1
     meia=meia_1
@@ -65,10 +81,25 @@ while (True):
         inteira *= preco_base_3
         meia = (meia * preco_base_3) / 2 
         vip = (vip * preco_base_3) * 1.5
+<<<<<<< HEAD
         
     endloop = input ("Deseja encerrar o atendimento:" )
              
     
+=======
+
+        if (sessao == 1):
+            sessao1_f1=True
+        elif (sessao == 2):
+            sessao2_f1=True 
+    else:
+        print ("Error")
+
+        print (f"R$ {inteira} - {preco_base_1} porb")
+        print (f"R$ {meia}")
+        print (f"R$ {vip}")
+
+>>>>>>> da2b94ac963222fc62eca6c5e2de22ef7bb9c0c5
     if (endloop.lower() == "sim"):
         
             print (t_filme," - Sessão", sessao, ":"  )
