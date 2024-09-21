@@ -54,7 +54,7 @@ while (True):
     else:
         print ("Error")
 
-        print (f"R$ {inteira} - {preco_base_1} porb")
+        print (f"R$ {inteira}")
         print (f"R$ {meia}")
         print (f"R$ {vip}")
 
