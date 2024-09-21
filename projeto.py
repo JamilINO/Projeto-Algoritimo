@@ -58,4 +58,3 @@ while (True):
     if (endloop.lower() == "sim"):
         break 
 
-
