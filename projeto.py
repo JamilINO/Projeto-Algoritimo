@@ -6,56 +6,89 @@ while (True):
 
     print("Filmes disponíveis: Filme 1, Filme 2 e Filme 3")
 
-    t_filme=input("Qual filme deseja assistir? \n")
+    t_filme=input("Qual filme deseja assistir? ")
 
     print("Escolha entre sessão 1 e 2")
 
     sessao=int(input("Qual a sessão:"))
+    while (sessao >= 3) or (sessao < 1):
+        
+        sessao = int(input("Digite uma sessão válida:" ))
 
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
 
-    inteira=int(input("Quantas entradas inteiras:"))
-    meia=int(input("Quantas entradas meia:"))
-    vip=int(input("Quantas entradas vip:"))
+    inteira_1=int(input("Quantas entradas inteiras:" ))
+    meia_1=int(input("Quantas entradas meia:" ))
+    vip_1=int(input("Quantas entradas vip:" ))
 
-    endloop = input ("Deseja encerrar o atendimento:")
+    soma_ava = 0
+    inteira=0
+    meia=0
+    vip=0
+    soma_inteira=0
+    soma_meia=0
+    soma_vip=0
+    soma_filme=""
+
     
+    inteira=inteira_1
+    meia=meia_1
+    vip=vip_1
+    
+    print("Avalie o filme de 1 a 5 estrelas")
+    
+    avaliacao = int(input("Qual a avaliação desse filme:" ))
+
+    soma_ava = soma_ava + avaliacao
+
     if (t_filme.lower() == "filme 1" ):
-        inteira *= preco_base_1 
-        meia = (meia * preco_base_1) / 2 
+        
+
+        inteira *= preco_base_1
+        
+
+
+        meia = (meia * preco_base_1) / 2
+        
+
         vip = (vip * preco_base_1) * 1.5
-        print (f"R$ {inteira}")
-        print (f"R$ {meia}")
-        print (f"R$ {vip}")
-        if (sessao == 1):
-            sessao1_f1=True
-        elif (sessao == 2):
-            sessao2_f1=True 
+        
+            
     elif (t_filme.lower() == "filme 2" ):
         inteira *= preco_base_2 
         meia = (meia * preco_base_2) / 2 
         vip = (vip * preco_base_2) * 1.5
-        print (f"R$ {inteira}")
-        print (f"R$ {meia}")
-        print (f"R$ {vip}")
-        if (sessao == 1):
-            sessao1_f1=True
-        elif (sessao == 2):
-            sessao2_f1=True 
+           
+            
     elif (t_filme.lower() == "filme 3" ):
+
         inteira *= preco_base_3
         meia = (meia * preco_base_3) / 2 
         vip = (vip * preco_base_3) * 1.5
-        print (f"R$ {inteira}")
-        print (f"R$ {meia}")
-        print (f"R$ {vip}")
-        if (sessao == 1):
-            sessao1_f1=True
-        elif (sessao == 2):
-            sessao2_f1=True 
-    else:
-        print ("Error")
+        
+    endloop = input ("Deseja encerrar o atendimento:" )
+             
+    
     if (endloop.lower() == "sim"):
-        break 
-
+        
+            print (t_filme," - Sessão", sessao, ":"  )
+            print ("Quantidade de ingressos vendidos")
+            print (f"-Inteira: {inteira_1:.2f}")
+            print (f"-Meia:{meia_1:.2f}")
+            print (f"-VIP:{vip_1:.2f}")
+            print ("Receita por tipo",sessao)
+            print (f"- Inteira: R$ {inteira:.2f}")
+            print (f"- Meia: R$ {meia:.2f}")
+            print (f"- VIP: R$ {vip:.2f}")
+            print ("Média de avaliações:" )
+            print ("Filme 1:" )
+            print ("Filme 2:" )
+            print ("Filme 3:" )
+            print ("Total de ingresso vendidos:" )
+            print ("Receita total do dia: R$", inteira+meia+vip )
+    
+            break
+                
+   
+   
 
