@@ -139,13 +139,13 @@ Média de avaliações:\n
 
     if it_f1 > 0:
         #print (f"Filme 1: {round(media_f1 / it_f1 )}" )
-        relatorio += f"Filme 1: {round(media_f1 / it_f1 )}"
+        relatorio += f"Filme 1: {round(media_f1 / it_f1 )}\n"
     if it_f2 > 0:
         #print (f"Filme 2: {round(media_f2 / it_f2)}" )
-        relatorio += f"Filme 2: {round(media_f2 / it_f2)}"
+        relatorio += f"Filme 2: {round(media_f2 / it_f2)}\n"
     if it_f3 > 0: 
         #print (f"Filme 3: {round(media_f3 / it_f3 )}" )
-        relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
+        relatorio += f"Filme 3: {round(media_f3 / it_f3 )}\n"
 
     relatorio += f"""
     Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}
