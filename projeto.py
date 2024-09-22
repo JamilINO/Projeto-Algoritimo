@@ -38,6 +38,15 @@ while (True):
 
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
 
+    
+    if t_filme.lower() == "filme 1":
+        print(f"Ingressos Restantes Sessão 1: {capacidade_f1 - f1_s1}\nIngressos Restantes Sessão 2: {capacidade_f1 - f1_s2}")
+    elif t_filme.lower() == "filme 2":
+        print(f"Ingressos Restantes Sessão 1: {capacidade_f2 - f2_s2}\nIngressos Restantes Sessão 2: {capacidade_f2 - f2_s2}")
+    if t_filme.lower() == "filme 3":
+        print(f"Ingressos Restantes Sessão 1: {capacidade_f3 - f3_s2}\nIngressos Restantes Sessão 2: {capacidade_f3 - f3_s2}")
+
+
     inteira_1=int(input("Quantas entradas inteiras:" ))
     meia_1=int(input("Quantas entradas meia:" ))
     vip_1=int(input("Quantas entradas vip:" ))
