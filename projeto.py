@@ -51,6 +51,7 @@ while (True):
     inteira=inteira_1
     meia=meia_1
     vip=vip_1
+    
     if t_filme.lower() == "filme 1":
         if sessao == 1:
             f1_s1 += inteira_1 + meia_1 + vip_1
@@ -93,21 +94,9 @@ while (True):
         media_f2 += avaliacao
         it_f2 += 1
 
-        if sessao == 1:
-            f2_s1 += inteira_1 + meia_1 + vip_1
-        elif sessao == 2:
-            f1_s2 += inteira_1 + meia_1 + vip_1
-
     elif t_filme.lower() == "filme 1":
         media_f3 += avaliacao
         it_f3 += 1
-
-        if sessao == 1:
-            f3_s1 += inteira_1 + meia_1 + vip_1
-        elif sessao == 2:
-            f3_s2 += inteira_1 + meia_1 + vip_1
-
-
 
     if (t_filme.lower() == "filme 1" ):
 
