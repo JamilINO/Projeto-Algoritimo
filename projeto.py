@@ -21,6 +21,9 @@ capacidade_f1 = 50
 capacidade_f2 = 40 
 capacidade_f3 = 30
 
+
+relatorio = ""
+
 while (True):
 
     print("Filmes disponíveis: Filme 1, Filme 2 e Filme 3")
@@ -121,30 +124,40 @@ while (True):
         
     endloop = input ("Deseja encerrar o atendimento:" )
 
+    relatorio += f"""
+{t_filme} - Sessão {sessao}: 
+Quantidade de ingressos vendidos
+-Inteira: {inteira_1}
+-Meia:{meia_1}
+-VIP:{vip_1}
+Receita por tipo {sessao}
+- Inteira: R$ {inteira:.2f}
+- Meia: R$ {meia:.2f}
+- VIP: R$ {vip:.2f}
+Média de avaliações:\n
+    """
 
-    print (t_filme," - Sessão", sessao, ":"  )
-    print ("Quantidade de ingressos vendidos")
-    print (f"-Inteira: {inteira_1}")
-    print (f"-Meia:{meia_1}")
-    print (f"-VIP:{vip_1}")
-    print ("Receita por tipo",sessao)
-    print (f"- Inteira: R$ {inteira:.2f}")
-    print (f"- Meia: R$ {meia:.2f}")
-    print (f"- VIP: R$ {vip:.2f}")
-    print ("Média de avaliações:" )
     if it_f1 > 0:
-        print (f"Filme 1: {round(media_f1 / it_f1 )}" )
+        #print (f"Filme 1: {round(media_f1 / it_f1 )}" )
+        relatorio += f"Filme 1: {round(media_f1 / it_f1 )}"
     if it_f2 > 0:
-        print (f"Filme 2: {round(media_f2 / it_f2)}" )
+        #print (f"Filme 2: {round(media_f2 / it_f2)}" )
+        relatorio += f"Filme 2: {round(media_f2 / it_f2)}"
     if it_f3 > 0: 
-        print (f"Filme 3: {round(media_f3 / it_f3 )}" )
+        #print (f"Filme 3: {round(media_f3 / it_f3 )}" )
+        relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
 
-    print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2} " )
-    print ("Receita total do dia: R$", inteira+meia+vip )
+    relatorio += f"""
+    Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}
+    Receita total do dia: R$ {inteira+meia+vip} """
+    #print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2} " )
+    #print ("Receita total do dia: R$", inteira+meia+vip )
+ 
     
              
     if (endloop.lower() == "sim"):
-            break
+        print(relatorio)
+        break
                 
    
    
