@@ -39,10 +39,10 @@ while (True):
     meia_1=int(input("Quantas entradas meia:" ))
     vip_1=int(input("Quantas entradas vip:" ))
 
-    soma_ava = 0
     inteira=0
     meia=0
     vip=0
+    
     soma_inteira=0
     soma_meia=0
     soma_vip=0
@@ -122,29 +122,30 @@ while (True):
     endloop = input ("Deseja encerrar o atendimento:" )
 
 
-    print (t_filme," - Sessão", sessao, ":"  )
-    print ("Quantidade de ingressos vendidos")
-    print (f"-Inteira: {inteira_1}")
-    print (f"-Meia:{meia_1}")
-    print (f"-VIP:{vip_1}")
-    print ("Receita por tipo",sessao)
-    print (f"- Inteira: R$ {inteira:.2f}")
-    print (f"- Meia: R$ {meia:.2f}")
-    print (f"- VIP: R$ {vip:.2f}")
-    print ("Média de avaliações:" )
-    if it_f1 > 0:
-        print (f"Filme 1: {round(media_f1 / it_f1 )}" )
-    if it_f2 > 0:
-        print (f"Filme 2: {round(media_f2 / it_f2)}" )
-    if it_f3 > 0: 
-        print (f"Filme 3: {round(media_f3 / it_f3 )}" )
-
-    print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2} " )
-    print ("Receita total do dia: R$", inteira+meia+vip )
+    
     
              
     if (endloop.lower() == "sim"):
-            break
+        print (t_filme," - Sessão", sessao, ":"  )
+        print ("Quantidade de ingressos vendidos")
+        print (f"-Inteira: {inteira_1}")
+        print (f"-Meia:{meia_1}")
+        print (f"-VIP:{vip_1}")
+        print ("Receita por tipo",sessao)
+        print (f"- Inteira: R$ {inteira:.2f}")
+        print (f"- Meia: R$ {meia:.2f}")
+        print (f"- VIP: R$ {vip:.2f}")
+        print ("Média de avaliações:" )
+        if it_f1 > 0:
+            print (f"Filme 1: {round(media_f1 / it_f1 )}" )
+        if it_f2 > 0:
+            print (f"Filme 2: {round(media_f2 / it_f2)}" )
+        if it_f3 > 0: 
+            print (f"Filme 3: {round(media_f3 / it_f3 )}" )
+
+        print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2} " )
+        print ("Receita total do dia: R$", inteira+meia+vip )
+        break
                 
    
    
