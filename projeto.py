@@ -163,14 +163,15 @@ Receita por tipo (Sessão {sessao})
         print ("Média de avaliações:\n")
 
         if it_f1 > 0:
-            print (f"Filme 1: {round(media_f1 / it_f1 )}" )
+            print (f"Filme 1: {round(media_f1 / it_f1 )}\n" )
             relatorio += f"Filme 1: {round(media_f1 / it_f1 )}"
         if it_f2 > 0:
-            print (f"Filme 2: {round(media_f2 / it_f2)}" )
+            print (f"Filme 2: {round(media_f2 / it_f2)}\n" )
             relatorio += f"Filme 2: {round(media_f2 / it_f2)}"
-        if it_f3 > 0: 
+        if it_f3 > 0:
             print (f"Filme 3: {round(media_f3 / it_f3 )}\n" )
             relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
+            
         print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}")
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
     
