@@ -24,6 +24,20 @@ capacidade_f3 = 30
 
 relatorio = ""
 
+inte1 = 0
+
+mei1 = 0
+vp1 = 0
+
+inte2 = 0
+mei2 = 0
+vp2 = 0
+
+inte3 = 0
+mei3 = 0
+vp3 = 0
+    
+
 while (True):
 
     print("Filmes disponíveis: Filme 1, Filme 2 e Filme 3")
@@ -94,17 +108,6 @@ while (True):
     
     avaliacao = int(input("Qual a avaliação desse filme:" ))
 
-    inte1 = 0
-    mei1 = 0
-    vp1 = 0
-    
-    inte2 = 0
-    mei2 = 0
-    vp2 = 0
-    
-    inte3 = 0
-    mei3 = 0
-    vp3 = 0
     
     if t_filme.lower() == "filme 1":
         media_f1 += avaliacao
@@ -120,7 +123,7 @@ while (True):
 
     if (t_filme.lower() == "filme 1" ):
 
-        inteira = preco_base_1 * inteira 
+        inteira *= preco_base_1 
         meia = (meia * preco_base_1) / 2
         vip = (vip * preco_base_1) * 1.5 
         
@@ -138,18 +141,9 @@ while (True):
         
     endloop = input ("Deseja encerrar o atendimento:" )
 
-    inte1 = inteira 
-    mei1 = meia 
-    vp1 = vip 
-    
-    inte2 = (inteira + inte1)
-    mei2 = (meia + mei1)
-    vp2 = (vip + vp1)
-    
-    inte3 = (inteira+inte2)
-    mei3 = (meia+mei2)
-    vp3 = (vip+vp2)
-   
+    inte1 += inteira 
+    mei1 += meia 
+    vp1 += vip   
 
     
     relatorio += f"""
@@ -178,18 +172,7 @@ Receita por tipo (Sessão {sessao})
             print (f"Filme 3: {round(media_f3 / it_f3 )}\n" )
             relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
         print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}")
-        print (f"Receita total do dia: R$ { inte3 + mei3 + vp3 }\n")
-        print (inte1)
-        print (mei1)
-        print (vp1)
-        
-        print (inte2)
-        print (mei2)
-        print (vp2)
-        
-        print (inte3)
-        print (mei3)
-        print (vp3)
+        print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
     
         break
                 

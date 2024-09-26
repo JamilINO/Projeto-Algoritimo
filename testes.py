@@ -1,30 +1,20 @@
-import unittest
-from unittest.mock import *
+import pytest
 
-class TestStringMethods(unittest.TestCase):
+""" CODE """
+def say_hello():
+    name = input("What is your first name?")
+    name2 = input("What is your last name?")
+    print("Hello " + name + " " + name2)
+    return "Hello " + name + " " + name2
 
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
+if __name__ == "__main__":
+    say_hello()
 
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
-
-    @patch('builtins.input', lambda _: 'y') # <- value to be returned by input method
-    def test_should_be_the_correct_value(self):
-
-        # replace with your class or method to be tested:
-        value = input('enter with a value')
-
-        assert value == 'y'
-
-if __name__ == '__main__':
-    unittest.main()
+""" TEST """
+class TestMy:
+    def test_say_hello(monkeypatch):
+        inputs = iter(['Pavol', 'Kutaj'])
+        monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+        result = say_hello()
+        assert result == "Hello Pavol Kutaj"
