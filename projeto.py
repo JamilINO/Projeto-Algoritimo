@@ -114,6 +114,14 @@ def verifica_sessao(t_filme: int):
 
     return sessao
     
+def get_ingressos():
+    print("Os tipos de ingresso são: Inteira, Meia e VIP ")
+
+    inteiras = int(input("Quantas entradas inteiras:" ))
+    meias = int(input("Quantas entradas meia:" ))
+    vips = int(input("Quantas entradas vip:" ))
+
+    return (inteiras, meias, vips)
 
 def exibe_relatorio():
     print(relatorio)
@@ -127,15 +135,7 @@ def main():
 
     sessao = verifica_sessao(t_filme)
 
-    print("Os tipos de ingresso são: Inteira, Meia e VIP ")
-
-    inteiras = int(input("Quantas entradas inteiras:" ))
-    meias = int(input("Quantas entradas meia:" ))
-    vips = int(input("Quantas entradas vip:" ))
-
-    inteira=inteiras
-    meia=meias
-    vip=vips
+    inteiras, meias, vips = get_ingressos()
 
     if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > filmes[t_filme - 1]["capacidade"]:
         print("Capacidade acima do limite, Descartando os Ingressos ")
