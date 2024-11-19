@@ -43,28 +43,33 @@ vp3 = 0
 
 filmes = [
     {
+        "nome": "Elisangela.py",
+        "capacidade": 50,
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
+        "avalicao": []
+
+    },
+    {
+        "nome": "JamilINO",
+        "capacidade": 40,
         "sessao": {
             "1": 0,
             "2": 0,
         },  
         "avalicao": []
     },
-        {
-        "sessao": {
-            "1": 0,
-            "2": 0,
-        },  
-        "avalicao": []
-    },
-        {
+    {
+        "nome": "Fluxograma: Uma saga Alcides",
+        "capacidade": 30,
         "sessao": {
             "1": 0,
             "2": 0,
         },  
         "avalicao": []
     }
-
-
 ]
     
 
@@ -73,7 +78,7 @@ while (True):
     print("Filmes disponíveis: ")
 
     for i in range(len(filmes)):
-        print(f"\t{i + 1}) Filme {i + 1}")
+        print(f"\t{i + 1}) Filme {filmes[i]["nome"]}")
 
     t_filme = int(input("\nQual filme deseja assistir? "))
 
@@ -85,7 +90,7 @@ while (True):
     print("Escolha entre uma as sessões disponíveis: ")
 
     for i in filmes[t_filme - 1]["sessao"].keys():
-        print(f"\t-> Sessão {i}: {capacidade[t_filme - 1] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
+        print(f"\t-> Sessão {i}: {filmes[t_filme - 1]["capacidade"] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
     
 
     sessao = input("\nQual a sessão: ")
@@ -108,7 +113,7 @@ while (True):
     meia=meias
     vip=vips
 
-    if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > capacidade[t_filme - 1]:
+    if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > filmes[t_filme - 1]["capacidade"]:
         print("Capacidade acima do limite, Descartando os Ingressos ")
         continue
     else:
@@ -125,6 +130,8 @@ while (True):
         avaliacao = int(input("Qual a avaliação desse filme: " ))
 
     filmes[t_filme - 1]["avalicao"].append(avaliacao)
+
+    print(filmes)
 
     if (t_filme.lower() == "filme 1" ):
 
