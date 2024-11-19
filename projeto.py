@@ -71,22 +71,18 @@ while (True):
         continue
 
 
-    print("Escolha entre uma sessão disponivel")
+    print("Escolha entre uma as sessões disponíveis: ")
 
-    sessao=int(input("Qual a sessão:"))
-    while (sessao >= 3) or (sessao < 1):
-        sessao = int(input("Digite uma sessão válida:" ))
+    for i in filmes_sessao[t_filme - 1].keys():
+        print(f"\t-> Sessão {i}: {capacidade[t_filme - 1] - filmes_sessao[t_filme - 1][i]} ingressos restantes")
+    
+
+    sessao = input("\nQual a sessão: ")
+    
+    while (sessao not in filmes_sessao[t_filme - 1].keys()):
+        sessao = input("Digite uma sessão válida: " )
 
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
-
-    
-    if t_filme.lower() == "filme 1":
-        print(f"Ingressos Restantes Sessão 1: {capacidade_f1 - f1_s1}\nIngressos Restantes Sessão 2: {capacidade_f1 - f1_s2}")
-    elif t_filme.lower() == "filme 2":
-        print(f"Ingressos Restantes Sessão 1: {capacidade_f2 - f2_s2}\nIngressos Restantes Sessão 2: {capacidade_f2 - f2_s2}")
-    if t_filme.lower() == "filme 3":
-        print(f"Ingressos Restantes Sessão 1: {capacidade_f3 - f3_s2}\nIngressos Restantes Sessão 2: {capacidade_f3 - f3_s2}")
-
 
     inteira_1=int(input("Quantas entradas inteiras:" ))
     meia_1=int(input("Quantas entradas meia:" ))
