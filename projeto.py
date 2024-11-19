@@ -24,8 +24,6 @@ f2_s2 = 0
 f3_s1 = 0
 f3_s2 = 0 
 
-capacidade = [50, 40, 30]
-
 relatorio = ""
 
 inte1 = 0
@@ -49,8 +47,13 @@ filmes = [
             "1": 0,
             "2": 0,
         },  
-        "avalicao": []
+        "avalicao": [],
 
+        "preco_base": 20,
+
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
     },
     {
         "nome": "JamilINO",
@@ -59,19 +62,41 @@ filmes = [
             "1": 0,
             "2": 0,
         },  
-        "avalicao": []
+        "avalicao": [],
+
+        "preco_base": 15,
+
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
     },
     {
         "nome": "Fluxograma: Uma saga Alcides",
         "capacidade": 30,
+        "preco_base": 10,
         "sessao": {
             "1": 0,
             "2": 0,
         },  
-        "avalicao": []
+        "avalicao": [],
+
+        "preco_base": 10,
+        
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
     }
 ]
-    
+
+
+
+
+for i in range(len(filmes)):
+    print(filmes[i]["preco_base"])
+    filmes[i]["preco_inteira"] *= filmes[i]["preco_base"]
+    filmes[i]["preco_meia"] = (filmes[i]["preco_meia"] * filmes[i]["preco_base"]) / 2
+    filmes[i]["preco_vip"] = (filmes[i]["preco_vip"] * filmes[i]["preco_base"]) * 1.5 
+
 
 while (True):
 
@@ -133,42 +158,22 @@ while (True):
 
     print(filmes)
 
-    if (t_filme.lower() == "filme 1" ):
-
-        inteira *= preco_base_1 
-        meia = (meia * preco_base_1) / 2
-        vip = (vip * preco_base_1) * 1.5 
-        
-    elif (t_filme.lower() == "filme 2" ):
-        
-        inteira *= preco_base_2 
-        meia = (meia * preco_base_2) / 2 
-        vip = (vip * preco_base_2) * 1.5
-            
-    elif (t_filme.lower() == "filme 3" ):
-
-        inteira *= preco_base_3
-        meia = (meia * preco_base_3) / 2 
-        vip = (vip * preco_base_3) * 1.5
-        
-    endloop = input ("Deseja encerrar o atendimento:" )
-
-    inte1 += inteira 
-    mei1 += meia 
-    vp1 += vip   
+    inte1 += (inteiras * filmes[t_filme - 1]["preco_inteira"]) 
+    mei1 += (meias * filmes[t_filme - 1]["preco_meia"]) 
+    vp1 += (vips * filmes[t_filme - 1]["preco_vip"]) 
 
     
     relatorio += f"""
 {t_filme} - Sessão {sessao}: 
 Quantidade de ingressos vendidos
--Inteira: {inteira_1}
--Meia:{meia_1}
--VIP:{vip_1}
+-Inteira: {inteiras}
+-Meia:{meias}
+-VIP:{vips}
 Receita por tipo (Sessão {sessao})
-- Inteira: R$ {inteira:.2f}
-- Meia: R$ {meia:.2f}
-- VIP: R$ {vip:.2f}\n
+
     """
+
+    endloop = input ("Deseja encerrar o atendimento:" )
     
     if (endloop.lower() == "sim"):
         print(relatorio)
@@ -183,8 +188,13 @@ Receita por tipo (Sessão {sessao})
         if it_f3 > 0:
             print (f"Filme 3: {round(media_f3 / it_f3 )}\n" )
             relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
-            
-        print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}")
+
+        total = 0 
+        for i in range(len(filmes)):
+            for j in filmes[i]["sessao"].values():
+                total += j
+        
+        print (f"Total de ingresso vendidos: {total}")
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
     
         break
