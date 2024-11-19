@@ -5,10 +5,6 @@
 #     You should have received a copy of the Affero GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 
 # Repositório Git https://github.com/JamilINO/Projeto-Algoritimo.git
-preco_base_1 = 20
-preco_base_2 = 15
-preco_base_3 = 10
-
 
 media_f1 = 0
 it_f1 = 0
@@ -16,13 +12,6 @@ media_f2 = 0
 it_f2 = 0
 media_f3 = 0
 it_f3 = 0
-
-f1_s1 = 0  
-f1_s2 = 0 
-f2_s1 = 0 
-f2_s2 = 0
-f3_s1 = 0
-f3_s2 = 0 
 
 relatorio = ""
 
@@ -164,7 +153,7 @@ while (True):
 
     
     relatorio += f"""
-{t_filme} - Sessão {sessao}: 
+Filme {t_filme} - Sessão {sessao}: 
 Quantidade de ingressos vendidos
 -Inteira: {inteiras}
 -Meia:{meias}
@@ -173,28 +162,23 @@ Receita por tipo (Sessão {sessao})
 
     """
 
-    endloop = input ("Deseja encerrar o atendimento:" )
+    end_loop = input ("Deseja encerrar o atendimento:" )
     
-    if (endloop.lower() == "sim"):
-        print(relatorio)
-        print ("Média de avaliações:\n")
+    if (end_loop.lower() == "sim"):
+        relatorio += "\nMédia de avaliações:\n"
 
-        if it_f1 > 0:
-            print (f"Filme 1: {round(media_f1 / it_f1 )}\n" )
-            relatorio += f"Filme 1: {round(media_f1 / it_f1 )}"
-        if it_f2 > 0:
-            print (f"Filme 2: {round(media_f2 / it_f2)}\n" )
-            relatorio += f"Filme 2: {round(media_f2 / it_f2)}"
-        if it_f3 > 0:
-            print (f"Filme 3: {round(media_f3 / it_f3 )}\n" )
-            relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
+        for i in range(len(filmes)):
+            if len(filmes[i]["avalicao"]) != 0:
+                relatorio += f"Filme {i + 1}: {round(sum(filmes[i]["avalicao"]) / len(filmes[i]["avalicao"]) )}\n"
 
         total = 0 
         for i in range(len(filmes)):
             for j in filmes[i]["sessao"].values():
                 total += j
-        
+
         print (f"Total de ingresso vendidos: {total}")
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
-    
+
         break
+
+print(relatorio)
