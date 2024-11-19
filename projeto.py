@@ -19,7 +19,6 @@ it_f3 = 0
 relatorio = ""
 
 inte1 = 0
-
 mei1 = 0
 vp1 = 0
 
@@ -84,14 +83,12 @@ filmes = [
 
 
 for i in range(len(filmes)):
-    print(filmes[i]["preco_base"])
     filmes[i]["preco_inteira"] *= filmes[i]["preco_base"]
     filmes[i]["preco_meia"] = (filmes[i]["preco_meia"] * filmes[i]["preco_base"]) / 2
     filmes[i]["preco_vip"] = (filmes[i]["preco_vip"] * filmes[i]["preco_base"]) * 1.5 
 
 
-while (True):
-
+def print_filmes():
     print("Filmes disponíveis: ")
 
     for i in range(len(filmes)):
@@ -101,19 +98,34 @@ while (True):
 
     if t_filme > len(filmes):
         print("opção inválida\n\n")
-        continue
+        print_filmes()
+    else:
+        return t_filme
 
-
+def verifica_sessao(t_filme: int):
     print("Escolha entre uma as sessões disponíveis: ")
 
     for i in filmes[t_filme - 1]["sessao"].keys():
         print(f"\t-> Sessão {i}: {filmes[t_filme - 1]["capacidade"] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
-    
-
     sessao = input("\nQual a sessão: ")
-    
+
     while (sessao not in filmes[t_filme - 1]["sessao"].keys()):
         sessao = input("Digite uma sessão válida: " )
+
+    return sessao
+    
+
+def exibe_relatorio():
+    print(relatorio)
+    writer = open(f"Relatorio {datetime.now().strftime("%B_%d_%G")}", "a")
+    writer.write(relatorio)
+    writer.close()
+
+
+def main():
+    t_filme = print_filmes()
+
+    sessao = verifica_sessao(t_filme)
 
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
 
@@ -121,18 +133,13 @@ while (True):
     meias = int(input("Quantas entradas meia:" ))
     vips = int(input("Quantas entradas vip:" ))
 
-    soma_inteira=0
-    soma_meia=0
-    soma_vip=0
-    soma_filme=""
-    
     inteira=inteiras
     meia=meias
     vip=vips
 
     if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > filmes[t_filme - 1]["capacidade"]:
         print("Capacidade acima do limite, Descartando os Ingressos ")
-        continue
+        return
     else:
         filmes[t_filme - 1]["sessao"][sessao] += (inteiras + meias + vips)
 
@@ -149,6 +156,8 @@ while (True):
     filmes[t_filme - 1]["avalicao"].append(avaliacao)
 
     print(filmes)
+
+    global inte1, mei1, vp1, relatorio
 
     inte1 += (inteiras * filmes[t_filme - 1]["preco_inteira"]) 
     mei1 += (meias * filmes[t_filme - 1]["preco_meia"]) 
@@ -182,7 +191,11 @@ Receita por tipo (Sessão {sessao})
         print (f"Total de ingresso vendidos: {total}")
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
 
-        break
+        exibe_relatorio()
+        exit()
 
-print(relatorio)
-open(f"Relatorio {datetime.now().timestamp()}", relatorio)
+while (True):
+    main();
+
+
+
