@@ -41,19 +41,29 @@ inte3 = 0
 mei3 = 0
 vp3 = 0
 
-filmes_sessao = [
+filmes = [
     {
-    "1": 0,
-    "2": 0
-    },  
-    {
-    "1": 0,
-    "2": 0
-    }, 
-    {
-    "1": 0,
-    "2": 0
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
+
+        
+    },
+        {
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
+    },
+        {
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
     }
+
+
 ]
     
 
@@ -61,73 +71,49 @@ while (True):
 
     print("Filmes disponíveis: ")
 
-    for i in range(len(filmes_sessao)):
+    for i in range(len(filmes)):
         print(f"\t{i + 1}) Filme {i + 1}")
 
     t_filme = int(input("\nQual filme deseja assistir? "))
 
-    if t_filme > len(filmes_sessao):
+    if t_filme > len(filmes):
         print("opção inválida\n\n")
         continue
 
 
     print("Escolha entre uma as sessões disponíveis: ")
 
-    for i in filmes_sessao[t_filme - 1].keys():
-        print(f"\t-> Sessão {i}: {capacidade[t_filme - 1] - filmes_sessao[t_filme - 1][i]} ingressos restantes")
+    for i in filmes[t_filme - 1]["sessao"].keys():
+        print(f"\t-> Sessão {i}: {capacidade[t_filme - 1] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
     
 
     sessao = input("\nQual a sessão: ")
     
-    while (sessao not in filmes_sessao[t_filme - 1].keys()):
+    while (sessao not in filmes[t_filme - 1]["sessao"].keys()):
         sessao = input("Digite uma sessão válida: " )
 
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
 
-    inteira_1=int(input("Quantas entradas inteiras:" ))
-    meia_1=int(input("Quantas entradas meia:" ))
-    vip_1=int(input("Quantas entradas vip:" ))
+    inteiras = int(input("Quantas entradas inteiras:" ))
+    meias = int(input("Quantas entradas meia:" ))
+    vips = int(input("Quantas entradas vip:" ))
 
     soma_inteira=0
     soma_meia=0
     soma_vip=0
     soma_filme=""
     
-    inteira=inteira_1
-    meia=meia_1
-    vip=vip_1
+    inteira=inteiras
+    meia=meias
+    vip=vips
 
-    if t_filme.lower() == "filme 1":
-        if sessao == 1:
-            f1_s1 += (inteira_1 + meia_1 + vip_1)
-        elif sessao == 2:
-            f1_s2 += (inteira_1 + meia_1 + vip_1)
+    if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > capacidade[t_filme - 1]:
+        print("Capacidade acima do limite, Descartando os Ingressos ")
+        continue
+    else:
+        filmes[t_filme - 1]["sessao"][sessao] += (inteiras + meias + vips)
 
-        if f1_s1 > capacidade_f1 or f1_s2 > capacidade_f1:
-            print("Capacidade acima do limite, Descartando os Ingressos ")
-            continue
-
-    if t_filme.lower() == "filme 2":
-        if sessao == 1:
-            f2_s1 += (inteira_1 + meia_1 + vip_1)
-        elif sessao == 2:
-            f2_s2 += (inteira_1 + meia_1 + vip_1)
-
-        if f2_s2 > capacidade_f1 or f2_s2 > capacidade_f1:
-            print("Capacidade acima do limite, Descartando os Ingressos ")
-            continue
-
-    if t_filme.lower() == "filme 3":
-        if sessao == 1:
-            f3_s1 += (inteira_1 + meia_1 + vip_1)
-        elif sessao == 2:
-            f3_s2 += (inteira_1 + meia_1 + vip_1)
-
-        if f3_s1 > capacidade_f1 or f3_s2 > capacidade_f1:
-            print("Capacidade acima do limite, Descartando os Ingressos ")
-            continue
-
-
+    print(filmes)
 
     print("Avalie o filme de 1 a 5 estrelas")
     
@@ -201,8 +187,3 @@ Receita por tipo (Sessão {sessao})
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
     
         break
-                
-   
-   
-
-
