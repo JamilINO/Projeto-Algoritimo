@@ -59,11 +59,19 @@ filmes_sessao = [
 
 while (True):
 
-    print("Filmes disponíveis: Filme 1, Filme 2 e Filme 3")
+    print("Filmes disponíveis: ")
 
-    t_filme=input("Qual filme deseja assistir? ")
+    for i in range(len(filmes_sessao)):
+        print(f"\t{i + 1}) Filme {i + 1}")
 
-    print("Escolha entre sessão 1 e 2")
+    t_filme = int(input("\nQual filme deseja assistir? "))
+
+    if t_filme > len(filmes_sessao):
+        print("opção inválida\n\n")
+        continue
+
+
+    print("Escolha entre uma sessão disponivel")
 
     sessao=int(input("Qual a sessão:"))
     while (sessao >= 3) or (sessao < 1):
@@ -93,17 +101,36 @@ while (True):
     meia=meia_1
     vip=vip_1
 
-    for i in range(len(filmes_sessao)):
-        if t_filme.lower() == f"filme {i + 1}":
-            if sessao == 1:
-                filmes_sessao[i]["1"] = (inteira_1 + meia_1 + vip_1)
-            elif sessao == 2:
-                filmes_sessao[i]["2"] = (inteira_1 + meia_1 + vip_1)
+    if t_filme.lower() == "filme 1":
+        if sessao == 1:
+            f1_s1 += (inteira_1 + meia_1 + vip_1)
+        elif sessao == 2:
+            f1_s2 += (inteira_1 + meia_1 + vip_1)
 
-            for j in filmes_sessao[i].values
-            if f1_s1 > capacidade[i]:
-                print("Capacidade acima do limite, Descartando os Ingressos ")
-                continue
+        if f1_s1 > capacidade_f1 or f1_s2 > capacidade_f1:
+            print("Capacidade acima do limite, Descartando os Ingressos ")
+            continue
+
+    if t_filme.lower() == "filme 2":
+        if sessao == 1:
+            f2_s1 += (inteira_1 + meia_1 + vip_1)
+        elif sessao == 2:
+            f2_s2 += (inteira_1 + meia_1 + vip_1)
+
+        if f2_s2 > capacidade_f1 or f2_s2 > capacidade_f1:
+            print("Capacidade acima do limite, Descartando os Ingressos ")
+            continue
+
+    if t_filme.lower() == "filme 3":
+        if sessao == 1:
+            f3_s1 += (inteira_1 + meia_1 + vip_1)
+        elif sessao == 2:
+            f3_s2 += (inteira_1 + meia_1 + vip_1)
+
+        if f3_s1 > capacidade_f1 or f3_s2 > capacidade_f1:
+            print("Capacidade acima do limite, Descartando os Ingressos ")
+            continue
+
 
 
     print("Avalie o filme de 1 a 5 estrelas")
