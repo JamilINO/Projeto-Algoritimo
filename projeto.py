@@ -47,20 +47,21 @@ filmes = [
             "1": 0,
             "2": 0,
         },  
-
-        
+        "avalicao": []
     },
         {
         "sessao": {
             "1": 0,
             "2": 0,
         },  
+        "avalicao": []
     },
         {
         "sessao": {
             "1": 0,
             "2": 0,
         },  
+        "avalicao": []
     }
 
 
@@ -115,22 +116,15 @@ while (True):
 
     print(filmes)
 
-    print("Avalie o filme de 1 a 5 estrelas")
+    print("Avalie o filme de 0 a 5 estrelas")
     
-    avaliacao = int(input("Qual a avaliação desse filme:" ))
+    avaliacao = int(input("Qual a avaliação desse filme: " ))
 
-    
-    if t_filme.lower() == "filme 1":
-        media_f1 += avaliacao
-        it_f1 += 1
+    while avaliacao < 0 or avaliacao > 5:
+        print(f"{avaliacao} avalicação inválida!\nDigite um número entre 0 e 5 ")
+        avaliacao = int(input("Qual a avaliação desse filme: " ))
 
-    elif t_filme.lower() == "filme 2":
-        media_f2 += avaliacao
-        it_f2 += 1
-
-    elif t_filme.lower() == "filme 3":
-        media_f3 += avaliacao
-        it_f3 += 1
+    filmes[t_filme - 1]["avalicao"].append(avaliacao)
 
     if (t_filme.lower() == "filme 1" ):
 
