@@ -6,6 +6,9 @@
 
 # Repositório Git https://github.com/JamilINO/Projeto-Algoritimo.git
 
+from datetime import *
+
+
 media_f1 = 0
 it_f1 = 0
 media_f2 = 0
@@ -182,3 +185,4 @@ Receita por tipo (Sessão {sessao})
         break
 
 print(relatorio)
+open(f"Relatorio {datetime.now().timestamp()}", relatorio)
