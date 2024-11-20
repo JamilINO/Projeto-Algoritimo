@@ -162,33 +162,10 @@ def main():
 
     global inte1, mei1, vp1, relatorio
 
-<<<<<<< HEAD
-        inteira *= preco_base_1 
-        meia = (meia * preco_base_1) / 2
-        vip = (vip * preco_base_1) * 1.5 
-        
-    elif (t_filme.lower() == "filme 2" ):
-        
-        inteira *= preco_base_2 
-        meia = (meia * preco_base_2) / 2 
-        vip = (vip * preco_base_2) * 1.5
-            
-    elif (t_filme.lower() == "filme 3" ):
 
-        inteira *= preco_ base_3
-        meia = (meia * preco_base_3) / 2 
-        vip = (vip * preco_base_3) * 1.5
-        
-    endloop = input ("Deseja encerrar o atendimento:" )
-
-    inte1 += inteira 
-    mei1 += meia 
-    vp1 += vip   
-=======
     inte1 += (inteiras * filmes[t_filme - 1]["preco_inteira"]) 
     mei1 += (meias * filmes[t_filme - 1]["preco_meia"]) 
     vp1 += (vips * filmes[t_filme - 1]["preco_vip"]) 
->>>>>>> 58b32c085a822eecd3abc8e73148686d6bba9d8e
 
     
     relatorio += f"""
