@@ -146,7 +146,7 @@ while (True):
             
     elif (t_filme.lower() == "filme 3" ):
 
-        inteira *= preco_base_3
+        inteira *= preco_ base_3
         meia = (meia * preco_base_3) / 2 
         vip = (vip * preco_base_3) * 1.5
         
