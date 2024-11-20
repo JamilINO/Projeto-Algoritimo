@@ -5,9 +5,8 @@
 #     You should have received a copy of the Affero GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 
 # Repositório Git https://github.com/JamilINO/Projeto-Algoritimo.git
-preco_base_1 = 20
-preco_base_2 = 15
-preco_base_3 = 10
+
+from datetime import *
 
 
 media_f1 = 0
@@ -17,19 +16,9 @@ it_f2 = 0
 media_f3 = 0
 it_f3 = 0
 
-f1_s1 = 0  
-f1_s2 = 0 
-f2_s1 = 0 
-f2_s2 = 0
-f3_s1 = 0
-f3_s2 = 0 
-
-capacidade = [50, 40, 30]
-
 relatorio = ""
 
 inte1 = 0
-
 mei1 = 0
 vp1 = 0
 
@@ -43,97 +32,134 @@ vp3 = 0
 
 filmes = [
     {
+        "nome": "Elisangela.py",
+        "capacidade": 50,
         "sessao": {
             "1": 0,
             "2": 0,
         },  
+        "avalicao": [],
 
+        "preco_base": 20,
+
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
+    },
+    {
+        "nome": "JamilINO",
+        "capacidade": 40,
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
+        "avalicao": [],
+
+        "preco_base": 15,
+
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
+    },
+    {
+        "nome": "Fluxograma: Uma saga Alcides",
+        "capacidade": 30,
+        "preco_base": 10,
+        "sessao": {
+            "1": 0,
+            "2": 0,
+        },  
+        "avalicao": [],
+
+        "preco_base": 10,
         
-    },
-        {
-        "sessao": {
-            "1": 0,
-            "2": 0,
-        },  
-    },
-        {
-        "sessao": {
-            "1": 0,
-            "2": 0,
-        },  
+        "preco_inteira": 1,
+        "preco_meia": 1,
+        "preco_vip": 1,
     }
-
-
 ]
-    
 
-while (True):
 
+
+
+for i in range(len(filmes)):
+    filmes[i]["preco_inteira"] *= filmes[i]["preco_base"]
+    filmes[i]["preco_meia"] = (filmes[i]["preco_meia"] * filmes[i]["preco_base"]) / 2
+    filmes[i]["preco_vip"] = (filmes[i]["preco_vip"] * filmes[i]["preco_base"]) * 1.5 
+
+
+def print_filmes():
     print("Filmes disponíveis: ")
 
     for i in range(len(filmes)):
-        print(f"\t{i + 1}) Filme {i + 1}")
+        print(f"\t{i + 1}) Filme {filmes[i]["nome"]}")
 
     t_filme = int(input("\nQual filme deseja assistir? "))
 
     if t_filme > len(filmes):
         print("opção inválida\n\n")
-        continue
+        print_filmes()
+    else:
+        return t_filme
 
-
+def verifica_sessao(t_filme: int):
     print("Escolha entre uma as sessões disponíveis: ")
 
     for i in filmes[t_filme - 1]["sessao"].keys():
-        print(f"\t-> Sessão {i}: {capacidade[t_filme - 1] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
-    
-
+        print(f"\t-> Sessão {i}: {filmes[t_filme - 1]["capacidade"] - filmes[t_filme - 1]["sessao"][i]} ingressos restantes")
     sessao = input("\nQual a sessão: ")
-    
+
     while (sessao not in filmes[t_filme - 1]["sessao"].keys()):
         sessao = input("Digite uma sessão válida: " )
 
+    return sessao
+    
+def get_ingressos():
     print("Os tipos de ingresso são: Inteira, Meia e VIP ")
 
     inteiras = int(input("Quantas entradas inteiras:" ))
     meias = int(input("Quantas entradas meia:" ))
     vips = int(input("Quantas entradas vip:" ))
 
-    soma_inteira=0
-    soma_meia=0
-    soma_vip=0
-    soma_filme=""
-    
-    inteira=inteiras
-    meia=meias
-    vip=vips
+    return (inteiras, meias, vips)
 
-    if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > capacidade[t_filme - 1]:
+def exibe_relatorio():
+    print(relatorio)
+    writer = open(f"Relatorio {datetime.now().strftime("%B_%d_%G")}", "a")
+    writer.write(relatorio)
+    writer.close()
+
+
+def main():
+    t_filme = print_filmes()
+
+    sessao = verifica_sessao(t_filme)
+
+    inteiras, meias, vips = get_ingressos()
+
+    if filmes[t_filme - 1]["sessao"][sessao] + (inteiras + meias + vips) > filmes[t_filme - 1]["capacidade"]:
         print("Capacidade acima do limite, Descartando os Ingressos ")
-        continue
+        return
     else:
         filmes[t_filme - 1]["sessao"][sessao] += (inteiras + meias + vips)
 
     print(filmes)
 
-    print("Avalie o filme de 1 a 5 estrelas")
+    print("Avalie o filme de 0 a 5 estrelas")
     
-    avaliacao = int(input("Qual a avaliação desse filme:" ))
+    avaliacao = int(input("Qual a avaliação desse filme: " ))
 
-    
-    if t_filme.lower() == "filme 1":
-        media_f1 += avaliacao
-        it_f1 += 1
+    while avaliacao < 0 or avaliacao > 5:
+        print(f"{avaliacao} avalicação inválida!\nDigite um número entre 0 e 5 ")
+        avaliacao = int(input("Qual a avaliação desse filme: " ))
 
-    elif t_filme.lower() == "filme 2":
-        media_f2 += avaliacao
-        it_f2 += 1
+    filmes[t_filme - 1]["avalicao"].append(avaliacao)
 
-    elif t_filme.lower() == "filme 3":
-        media_f3 += avaliacao
-        it_f3 += 1
+    print(filmes)
 
-    if (t_filme.lower() == "filme 1" ):
+    global inte1, mei1, vp1, relatorio
 
+<<<<<<< HEAD
         inteira *= preco_base_1 
         meia = (meia * preco_base_1) / 2
         vip = (vip * preco_base_1) * 1.5 
@@ -155,35 +181,45 @@ while (True):
     inte1 += inteira 
     mei1 += meia 
     vp1 += vip   
+=======
+    inte1 += (inteiras * filmes[t_filme - 1]["preco_inteira"]) 
+    mei1 += (meias * filmes[t_filme - 1]["preco_meia"]) 
+    vp1 += (vips * filmes[t_filme - 1]["preco_vip"]) 
+>>>>>>> 58b32c085a822eecd3abc8e73148686d6bba9d8e
 
     
     relatorio += f"""
-{t_filme} - Sessão {sessao}: 
+Filme {t_filme} - Sessão {sessao}: 
 Quantidade de ingressos vendidos
--Inteira: {inteira_1}
--Meia:{meia_1}
--VIP:{vip_1}
+-Inteira: {inteiras}
+-Meia:{meias}
+-VIP:{vips}
 Receita por tipo (Sessão {sessao})
-- Inteira: R$ {inteira:.2f}
-- Meia: R$ {meia:.2f}
-- VIP: R$ {vip:.2f}\n
-    """
-    
-    if (endloop.lower() == "sim"):
-        print(relatorio)
-        print ("Média de avaliações:\n")
 
-        if it_f1 > 0:
-            print (f"Filme 1: {round(media_f1 / it_f1 )}\n" )
-            relatorio += f"Filme 1: {round(media_f1 / it_f1 )}"
-        if it_f2 > 0:
-            print (f"Filme 2: {round(media_f2 / it_f2)}\n" )
-            relatorio += f"Filme 2: {round(media_f2 / it_f2)}"
-        if it_f3 > 0:
-            print (f"Filme 3: {round(media_f3 / it_f3 )}\n" )
-            relatorio += f"Filme 3: {round(media_f3 / it_f3 )}"
-            
-        print (f"Total de ingresso vendidos: {f1_s1 + f1_s2 + f2_s1 + f2_s2 + f3_s1 + f3_s2}")
-        print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
+    """
+
+    end_loop = input ("Deseja encerrar o atendimento:" )
     
-        break
+    if (end_loop.lower() == "sim"):
+        relatorio += "\nMédia de avaliações:\n"
+
+        for i in range(len(filmes)):
+            if len(filmes[i]["avalicao"]) != 0:
+                relatorio += f"Filme {i + 1}: {round(sum(filmes[i]["avalicao"]) / len(filmes[i]["avalicao"]) )}\n"
+
+        total = 0 
+        for i in range(len(filmes)):
+            for j in filmes[i]["sessao"].values():
+                total += j
+
+        print (f"Total de ingresso vendidos: {total}")
+        print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 }\n")
+
+        exibe_relatorio()
+        exit()
+
+while (True):
+    main();
+
+
+
