@@ -62,7 +62,7 @@ filmes = [
         "preco_vip": 1,
     },
     {
-        "nome": "Fluxograma: Uma saga Alcides",
+        "nome": "Alcides no país dos Fluxogramas",
         "capacidade": 30,
         "preco_base": 10,
         "sessao": {
@@ -123,6 +123,16 @@ def get_ingressos():
 
     return (inteiras, meias, vips)
 
+def get_avalicao(t_filme: int):
+    avaliacao = int(input("Qual a avaliação desse filme: " ))
+
+    while avaliacao < 0 or avaliacao > 5:
+        print(f"{avaliacao} avalicação inválida!\nDigite um número entre 0 e 5 ")
+        avaliacao = int(input("Qual a avaliação desse filme: " ))
+
+    filmes[t_filme - 1]["avalicao"].append(avaliacao)
+
+
 def exibe_relatorio():
     print(relatorio)
     writer = open(f"Relatorio {datetime.now().strftime("%B_%d_%G")}", "a")
@@ -147,14 +157,7 @@ def main():
 
     print("Avalie o filme de 0 a 5 estrelas")
     
-    avaliacao = int(input("Qual a avaliação desse filme: " ))
-
-    while avaliacao < 0 or avaliacao > 5:
-        print(f"{avaliacao} avalicação inválida!\nDigite um número entre 0 e 5 ")
-        avaliacao = int(input("Qual a avaliação desse filme: " ))
-
-    filmes[t_filme - 1]["avalicao"].append(avaliacao)
-
+    
     print(filmes)
 
     global inte1, mei1, vp1, relatorio
