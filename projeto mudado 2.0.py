@@ -235,7 +235,7 @@ Receita por tipo Sessão {sessao}:
     for i in range(len(filmes)):
         for j in filmes[i]["sessao"].values():
             total += j
-    relatorio += (f"\nTotal de ingresso vendidos: {total}")
+    relatorio += (f"\nTotal de ingresso vendidos: {total}"\n)
     if food >= 10:
          relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10 por pipoca. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
     else: 
