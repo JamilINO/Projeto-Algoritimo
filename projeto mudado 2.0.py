@@ -239,7 +239,7 @@ Receita por tipo Sessão {sessao}:
         
     print (f"\nTotal de ingresso vendidos: {total}")
     if food >= 10:
-        print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
+        print (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10 por piipoca. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
     else: 
         print (f"Receita total do dia: R$ { inte1 + mei1 + vp1} \n")
 
