@@ -8,8 +8,6 @@
 
 from datetime import *
 
-poltronas = {i: False for i in range(1, 51)} 
-
 soma = 0 
 
 media_f1 = 0
@@ -32,6 +30,13 @@ vp2 = 0
 inte3 = 0
 mei3 = 0
 vp3 = 0
+
+poltronas1_1 = []
+poltronas1_2 = []
+poltronas2_1 = []
+poltronas2_2 = []
+poltronas3_1 = []
+poltronas3_2 = []
 
 filmes = [
     {
@@ -126,28 +131,80 @@ def get_ingressos():
     return (inteiras, meias, vips)
  
 
-def selecionar_poltronas():
+def selecionar_poltronas(tfilme, sessao):
        
     entrada = input("Digite os números das poltronas que deseja reservar (1-50), separados por espaço: ")
 
     poltronas_desejadas_str = entrada.split()
 
-    if all(p.isdigit() and 1 <= int(p) <= 50 for p in poltronas_desejadas_str):
-            
-        poltronas_desejadas = list(map(int, poltronas_desejadas_str))
-            
-        poltronas_ocupadas = [p for p in poltronas_desejadas if poltronas.get(p, False) == True]
-            
-        if poltronas_ocupadas:
-                print(f"As poltronas {', '.join(map(str, poltronas_ocupadas))} já estão ocupadas. Tente novamente.")
-        else:
-  
-            for p in poltronas_desejadas:
-                poltronas[p] = True  
-            print(f"Poltronas {', '.join(map(str, poltronas_desejadas))} reservadas com sucesso!")
-                 
-    else:
-        print("Entrada inválida! Por favor, insira apenas números válidos entre 1 e 50, separados por espaço.")
+    poltronas_desejadas = poltronas_desejadas_str.copy()
+
+    print (poltronas_desejadas_str) 
+    if int(entrada) > 50 or int(entrada) < 1:
+        selecionar_poltronas(tfilme,sessao)
+
+    for i in range(len(poltronas_desejadas_str)):
+        poltronas_desejadas[i] = 0 
+        if poltronas_desejadas_str[i] in poltronas_desejadas:
+            print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+            selecionar_poltronas(tfilme,sessao)
+    if tfilme == "1":
+        if sessao == "1":
+            cadeiras = poltronas1_1 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas1_1 += poltronas_desejadas_str
+
+                    
+        if sessao == "2":
+            cadeiras = poltronas1_2 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas1_2 += poltronas_desejadas_str
+
+
+    elif tfilme == "2":
+        if sessao == "1":
+            cadeiras = poltronas2_1 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas2_1 += poltronas_desejadas_str
+
+        if sessao == "2":
+            cadeiras = poltronas2_1 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas2_2 += poltronas_desejadas_str
+
+    elif tfilme == "3":
+        if sessao == "1":
+            cadeiras = poltronas3_1 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas3_1 += poltronas_desejadas_str
+        if sessao == "2":
+            cadeiras = poltronas3_2 + poltronas_desejadas_str
+            for i in range(len(poltronas_desejadas_str)):
+                poltronas_desejadas[i] = 0 
+                if poltronas_desejadas_str[i] in poltronas_desejadas:
+                    print(f"A cadeira {poltronas_desejadas_str[i]} já está reservada, escolha outra: ")
+                    selecionar_poltronas(tfilme,sessao)
+            poltronas3_2 += poltronas_desejadas_str
 
 def comida():
     print ("Valor pipoca: R$10")
@@ -182,7 +239,7 @@ def main():
 
     inteiras, meias, vips = get_ingressos()
 
-    selecionar_poltronas()
+    selecionar_poltronas(t_filme, sessao)
     
     food = comida()
     
@@ -235,7 +292,7 @@ Receita por tipo Sessão {sessao}:
     for i in range(len(filmes)):
         for j in filmes[i]["sessao"].values():
             total += j
-    relatorio += (f"\nTotal de ingresso vendidos: {total}"\n)
+    relatorio += (f"\nTotal de ingresso vendidos: {total}\n")
     if food >= 10:
          relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10 por pipoca. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
     else: 
@@ -247,6 +304,5 @@ Receita por tipo Sessão {sessao}:
     
 while (True):
     main()
-
 
 
