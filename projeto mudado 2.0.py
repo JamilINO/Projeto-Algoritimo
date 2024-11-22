@@ -127,7 +127,6 @@ def get_ingressos():
  
 
 def selecionar_poltronas():
-   
        
     entrada = input("Digite os números das poltronas que deseja reservar (1-50), separados por espaço: ")
 
@@ -238,7 +237,7 @@ Receita por tipo Sessão {sessao}:
             total += j
     relatorio += (f"\nTotal de ingresso vendidos: {total}")
     if food >= 10:
-         relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10 por piipoca. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
+         relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1 } + R$10 por pipoca. O valor setá então de R$ {inte1 + mei1 + vp1 + food} \n")
     else: 
         relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1} \n")
 
