@@ -242,7 +242,8 @@ Receita por tipo Sessão {sessao}:
         relatorio += (f"Receita total do dia: R$ { inte1 + mei1 + vp1} \n")
 
     exibe_relatorio()
-    exit()   
+    if (end_loop.lower() == "sim"):
+        exit()   
     
 while (True):
     main()
