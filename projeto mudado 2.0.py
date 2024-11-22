@@ -140,9 +140,7 @@ def selecionar_poltronas(tfilme, sessao):
     poltronas_desejadas = poltronas_desejadas_str.copy()
 
     print (poltronas_desejadas_str) 
-    if int(entrada) > 50 or int(entrada) < 1:
-        selecionar_poltronas(tfilme,sessao)
-
+    
     for i in range(len(poltronas_desejadas_str)):
         poltronas_desejadas[i] = 0 
         if poltronas_desejadas_str[i] in poltronas_desejadas:
